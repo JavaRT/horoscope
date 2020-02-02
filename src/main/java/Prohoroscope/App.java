@@ -5,15 +5,19 @@ import java.util.Scanner;
 
 public class App 
 {
-    public static void main( String[] args ) throws IOException {
-        System.out.println("podaj dane!");
+    public static void main( String[] args ) {
         Scanner scan = new Scanner(System.in);
+
+        System.out.println("podaj dane!");
         String znak = scan.next();
 
         String requestResult = Connector.getPage(znak);
-        if (requestResult.equals(Connector.NOT_FOUND))
-        System.out.println(requestResult);
+        String horoscopeMess = " ";
+        if (!requestResult.equals(Connector.NOT_FOUND)) {
+         horoscopeMess = HOROSCOPEXTRACTOR.getText(requestResult);
+        }
+        System.out.println(horoscopeMess);
 
 
     }
-}
+    }
