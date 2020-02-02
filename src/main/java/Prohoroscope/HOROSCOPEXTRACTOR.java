@@ -12,8 +12,8 @@ public class HOROSCOPEXTRACTOR {
         Matcher horoMatcher = horoPat.matcher(pageAsText);
         String foundText = "";
         if (horoMatcher.find()) {
-            foundText = horoMatcher.group();
+            foundText = horoMatcher.group().replace("<p class=\"lead\">", "").replace("</p>", "").replace(". ", ".\n");
         }
-            return foundText;
+        return foundText;
         }
     }
